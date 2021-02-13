@@ -240,8 +240,13 @@ class Toret_EA {
 	 */
 	public function add_attachments($attachments, $email_id, $order) {
 
-		if( $email_id != 'customer_processing_order' ){ return $attachments; }
+		//if( $email_id != 'customer_processing_order' ){ return $attachments; }
+		$excluded_customer_email_ids = array( 'customer_reset_password', 'customer_new_account' );
+		$excluded_admin_email_ids = array( 'new_order', 'cancelled_order', 'failed_order' );
 
+		if( in_array( $email_id, $excluded_admin_email_ids ) ){ return $attachments; }
+		if( in_array( $email_id, $excluded_customer_email_ids ) ){ return $attachments; }
+		
 		
 		//$attachments, $payment_method_id
 		$main_attachments = get_option('toret-ea-option');
