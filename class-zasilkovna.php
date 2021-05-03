@@ -815,12 +815,12 @@ class Woo_Zasilkovna {
 
 $('#place_order').bind('click.orderclick', function (event) {
             // Check DATE input value
-            var dateInput = $('#billing_address_2').val().length;
+            var dateInput = $('#billing_address_1').val().length;
             console.log('date input:' + dateInput);
             if (dateInput == 0) {
                 alert("Je potřeba zadat číslo popisné.");
                 event.preventDefault();
-                $('#billing_address_2').css({
+                $('#billing_address_1').css({
                     'border': 'solid 1px red'
                 });
                 $('html, body').animate({
@@ -829,10 +829,10 @@ $('#place_order').bind('click.orderclick', function (event) {
             } else {
                 // remove click preventDefault
                 $('#place_order').unbind('.orderclick');
-                $('#billing_address_2').css({
+                $('#billing_address_1').css({
                     'border': 'none'
                 });
-                $('#billing_address_2 > label > .required').remove();
+                $('#billing_address_1 > label > .required').remove();
             }
 				});
                                 
